@@ -1,0 +1,10 @@
+.messageError {
+  /* margin: auto; */
+  width: 380px;
+  padding: 10px;
+  background-color: rgb(255, 154, 154);
+  color: rgb(115, 0, 0);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}

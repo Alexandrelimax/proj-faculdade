@@ -1,0 +1,24 @@
+<div class="flex justify-between items-center p-5 bg-slate-300">
+  <div class="text-base font-medium">
+    <img class="w-10" [src]="logo" alt="" />
+  </div>
+  <ul *ngIf="isAuthenticate | async" class="flex gap-5 text-base font-medium">
+    <li><a [routerLink]="['/home']">Home</a></li>
+
+    <li class="cursor-pointer"><a (click)="logout()">Sair</a></li>
+  </ul>
+
+  <ul
+    *ngIf="!(isAuthenticate | async)"
+    class="flex gap-5 text-base font-medium"
+  >
+    <li>
+      <a
+        routerLinkActive="active"
+        [routerLink]="['/']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >login</a
+      >
+    </li>
+  </ul>
+</div>
