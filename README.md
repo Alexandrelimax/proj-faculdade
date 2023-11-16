@@ -1,27 +1,32 @@
-# ProjFacul1
+# Sistema de Login e Mudança de Tema em Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+Este projeto Angular implementa um sistema de login básico com funcionalidade de mudança de tema. A aplicação inclui um formulário de login, autenticação via `HttpClient` com dados mockados no arquivo `db/db.json`, e uma funcionalidade de mudança de tema.
 
-## Development server
+## Componentes Principais
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### LoginComponent
 
-## Code scaffolding
+O `LoginComponent` é responsável pelo formulário de login. Após a validação dos dados, utiliza o `AuthService` para armazenar o token no `localStorage` e notifica outros componentes sobre a autenticação bem-sucedida usando um `BehaviorSubject`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### HomeComponent
 
-## Build
+O `HomeComponent` é a página principal após o login, exibindo as boas-vindas ao usuário. Utiliza o `AuthService` para obter os dados do usuário e repassa esses dados para componentes filhos, como o `PerfilComponent`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### PerfilComponent
 
-## Running unit tests
+O `PerfilComponent` é um componente filho do `HomeComponent`. Ele recebe os dados do usuário e o modo de tema como entrada e exibe esses dados em seu template. Contém um botão que aciona um método para alterar o tema, enviando um evento para o `HomeComponent`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Diretiva de Mudança de Tema (ngThemeMode)
 
-## Running end-to-end tests
+A `ngThemeMode` é uma diretiva que altera o tema da página com base em um valor booleano fornecido como entrada. Essa diretiva é aplicada no `div` principal do `HomeComponent`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Serviço de Autenticação (AuthService)
 
-## Further help
+O `AuthService` gerencia a autenticação do usuário, armazenando o token no `localStorage` e notificando outros componentes por meio de um `BehaviorSubject` quando a autenticação é bem-sucedida.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Fluxo de Mudança de Tema
+
+1. O botão no `PerfilComponent` é clicado, acionando o método `buttonTheme()`.
+2. O método `buttonTheme()` emite um evento para o `HomeComponent` por meio do `EventEmitter`.
+3. O `HomeComponent` captura o evento e altera o valor do atributo `theme`.
+4. A mudança no valor de `theme` é refletida na diretiva `ngThemeMode`, alterando o tema da página.
