@@ -30,3 +30,4 @@ O `AuthService` gerencia a autenticação do usuário, armazenando o token no `l
 2. O método `buttonTheme()` emite um evento para o `HomeComponent` por meio do `EventEmitter`.
 3. O `HomeComponent` captura o evento e altera o valor do atributo `theme`.
 4. A mudança no valor de `theme` é refletida na diretiva `ngThemeMode`, alterando o tema da página.
+
