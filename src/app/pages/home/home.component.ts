@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   user?: UserSessionDto
   unsub = new Subject<void>()
-
+  theme = true
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -24,6 +24,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       })
   }
+  changeTheme(event: boolean) {
+    this.theme = event
+  }
+
   ngOnDestroy(): void {
     this.unsub.next()
     this.unsub.complete()

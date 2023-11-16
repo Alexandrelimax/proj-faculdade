@@ -12,12 +12,14 @@ import { LoginService } from './services/login.service';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavbarComponent,
     FooterComponent,
+
   ],
   imports: [
     BrowserModule,
